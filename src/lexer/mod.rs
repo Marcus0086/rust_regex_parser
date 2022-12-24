@@ -28,6 +28,12 @@ impl RegexLexer {
 
         match chr {
             '.' => Some(Token::AnyChar),
+            '*' => Some(Token::ZeroOrMore),
+            '+' => Some(Token::OneOrMore),
+            '?' => Some(Token::ZeroOrOne),
+            '(' => Some(Token::GroupStart),
+            ')' => Some(Token::GroupEnd),
+            '|' => Some(Token::Alternation),
             _ => Some(Token::Char(chr)),
         }
     }
@@ -36,5 +42,10 @@ impl RegexLexer {
         while self.pos < self.chars.len() && self.chars[self.pos].is_whitespace() {
             self.pos += 1;
         }
+    }
+
+    fn explanation(self) -> String {
+        let mut result = String::new();
+        result
     }
 }
