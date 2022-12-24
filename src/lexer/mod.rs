@@ -1,14 +1,14 @@
 use self::lib::Token;
 
 mod lib;
-struct RegexLexer {
+pub struct RegexLexer {
     regex: String,
     pos: usize,
     chars: Vec<char>,
 }
 
 impl RegexLexer {
-    fn new(regex: &str) -> Self {
+    pub fn new(regex: &str) -> Self {
         let chars: Vec<char> = regex.chars().collect();
         Self {
             regex: regex.to_string(),
@@ -44,7 +44,7 @@ impl RegexLexer {
         }
     }
 
-    fn explanation(&mut self) -> String {
+    pub fn explanation(&mut self) -> String {
         let mut result = String::new();
         while let Some(token) = self.next_token() {
             match token {
