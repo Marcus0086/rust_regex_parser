@@ -48,19 +48,21 @@ impl RegexLexer {
         let mut result = String::new();
         while let Some(token) = self.next_token() {
             match token {
-                Token::Char(chr) => result.push_str(&format!("Match the character '{}' ", chr)),
-                Token::AnyChar => result.push_str(&format!("Match any character ")),
-                Token::ZeroOrMore => {
-                    result.push_str(&format!("Match zero or more of the preceeding character "))
+                Token::Char(chr) => result.push_str(&format!("Match a '{}' character ", chr)),
+                Token::AnyChar => result.push_str("Match any character except line breaks. "),
+                Token::ZeroOrMore => result.push_str("Match zero or more of the preceeding token "),
+                Token::OneOrMore => result.push_str("Match one or more of the preceeding token "),
+                Token::ZeroOrOne => {
+                    result.push_str("Matches between zero and one of the preceeding token")
                 }
-                Token::OneOrMore => todo!(),
-                Token::ZeroOrOne => todo!(),
-                Token::GroupStart => todo!(),
-                Token::GroupEnd => todo!(),
-                Token::Alternation => todo!(),
+                Token::GroupStart => result.push_str("Start of a group "),
+                Token::GroupEnd => todo!("End of a group "),
+                Token::Alternation => {
+                    todo!("Acts likes a boolean OR. Matches the expression before of after the |. ")
+                }
                 _ => continue,
             }
         }
-        result
+        result.trim().to_owned()
     }
 }
