@@ -1,7 +1,8 @@
 use lexer::RegexLexer;
-
+use wasm_bindgen::prelude::*;
 mod lexer;
 
+#[wasm_bindgen]
 pub fn parse_regex(regex: &str) -> String {
     let mut lexer = RegexLexer::new(regex);
     lexer.explan_regex()
