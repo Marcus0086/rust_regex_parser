@@ -19,7 +19,7 @@ impl RegexLexer {
 
     fn next_token(&mut self) -> Option<Token> {
         self.skip_whitespace();
-        if self.pos > self.chars.len() {
+        if self.pos >= self.chars.len() {
             return None;
         }
 
@@ -48,18 +48,20 @@ impl RegexLexer {
         let mut result = String::new();
         while let Some(token) = self.next_token() {
             match token {
-                Token::Char(chr) => result.push_str(&format!("Match a '{}' character ", chr)),
+                Token::Char(chr) => result.push_str(&format!("Match a '{}' character. ", chr)),
                 Token::AnyChar => result.push_str("Match any character except line breaks. "),
-                Token::ZeroOrMore => result.push_str("Match zero or more of the preceeding token "),
-                Token::OneOrMore => result.push_str("Match one or more of the preceeding token "),
+                Token::ZeroOrMore => {
+                    result.push_str("Match zero or more of the preceeding token. ")
+                }
+                Token::OneOrMore => result.push_str("Match one or more of the preceeding token. "),
                 Token::ZeroOrOne => {
-                    result.push_str("Matches between zero and one of the preceeding token")
+                    result.push_str("Matches between zero and one of the preceeding token. ")
                 }
-                Token::GroupStart => result.push_str("Start of a group "),
-                Token::GroupEnd => todo!("End of a group "),
-                Token::Alternation => {
-                    todo!("Acts likes a boolean OR. Matches the expression before of after the |. ")
-                }
+                Token::GroupStart => result.push_str("Start of a group. "),
+                Token::GroupEnd => result.push_str("End of a group. "),
+                Token::Alternation => result.push_str(
+                    "Matches the expression before of after the | (Acts like a boolean OR). ",
+                ),
                 _ => continue,
             }
         }
