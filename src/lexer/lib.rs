@@ -1,5 +1,5 @@
 #[derive(Debug, PartialEq)]
-enum Token {
+pub enum Token {
     // Single characters
     Char(char),
     AnyChar,
