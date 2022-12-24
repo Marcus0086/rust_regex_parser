@@ -1,8 +1,4 @@
-struct RegexLexer {
-    regex: String,
-    pos: usize,
-    chars: Vec<char>,
-}
+mod lexer;
 fn main() {
     println!("Hello, world!");
 }
