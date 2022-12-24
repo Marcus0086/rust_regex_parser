@@ -44,7 +44,7 @@ impl RegexLexer {
         }
     }
 
-    pub fn explanation(&mut self) -> String {
+    pub fn explan_regex(&mut self) -> String {
         let mut result = String::new();
         while let Some(token) = self.next_token() {
             match token {
