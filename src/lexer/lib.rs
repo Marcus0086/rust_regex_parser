@@ -9,30 +9,29 @@ pub enum Token {
     GroupStart,
     GroupEnd,
     Alternation,
+    // // Keywords
+    // Dot,
+    // Star,
+    // Plus,
+    // Question,
+    // LeftParen,
+    // RightParen,
+    // Pipe,
 
-    // Keywords
-    Dot,
-    Star,
-    Plus,
-    Question,
-    LeftParen,
-    RightParen,
-    Pipe,
+    // // Character classes
+    // CharClassStart,
+    // CharClassEnd,
+    // CharClassInvert,
+    // CharRange,
 
-    // Character classes
-    CharClassStart,
-    CharClassEnd,
-    CharClassInvert,
-    CharRange,
+    // // Anchors
+    // Anchor_start,
+    // anchor_end,
+    // anchor_word_boundary,
 
-    // Anchors
-    Anchor_start,
-    anchor_end,
-    anchor_word_boundary,
-
-    // Special characters
-    Escape,
-    Octal,
-    Hex,
-    Unicode,
+    // // Special characters
+    // Escape,
+    // Octal,
+    // Hex,
+    // Unicode,
 }
