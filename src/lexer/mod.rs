@@ -19,6 +19,16 @@ impl RegexLexer {
 
     fn next_token(&mut self) -> Option<Token> {
         // self.skip_whitespace();
-        todo!()
+        if self.pos > self.chars.len() {
+            return None;
+        }
+
+        let chr = self.chars[self.pos];
+        self.pos += 1;
+
+        match chr {
+            '.' => Some(Token::AnyChar),
+            _ => Some(Token::Char(chr)),
+        }
     }
 }
