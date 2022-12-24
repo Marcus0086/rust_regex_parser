@@ -18,7 +18,7 @@ impl RegexLexer {
     }
 
     fn next_token(&mut self) -> Option<Token> {
-        // self.skip_whitespace();
+        self.skip_whitespace();
         if self.pos > self.chars.len() {
             return None;
         }
@@ -31,4 +31,6 @@ impl RegexLexer {
             _ => Some(Token::Char(chr)),
         }
     }
+
+    fn skip_whitespace(&mut self) {}
 }
