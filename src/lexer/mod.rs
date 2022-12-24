@@ -1,5 +1,6 @@
-mod lib;
+use self::lib::Token;
 
+mod lib;
 struct RegexLexer {
     regex: String,
     pos: usize,
@@ -14,5 +15,10 @@ impl RegexLexer {
             pos: 0,
             chars,
         }
+    }
+
+    fn next_token(&mut self) -> Option<Token> {
+        // self.skip_whitespace();
+        todo!()
     }
 }
