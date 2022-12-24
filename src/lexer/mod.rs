@@ -44,8 +44,23 @@ impl RegexLexer {
         }
     }
 
-    fn explanation(self) -> String {
+    fn explanation(&mut self) -> String {
         let mut result = String::new();
+        while let Some(token) = self.next_token() {
+            match token {
+                Token::Char(chr) => result.push_str(&format!("Match the character '{}' ", chr)),
+                Token::AnyChar => result.push_str(&format!("Match any character ")),
+                Token::ZeroOrMore => {
+                    result.push_str(&format!("Match zero or more of the preceeding character "))
+                }
+                Token::OneOrMore => todo!(),
+                Token::ZeroOrOne => todo!(),
+                Token::GroupStart => todo!(),
+                Token::GroupEnd => todo!(),
+                Token::Alternation => todo!(),
+                _ => continue,
+            }
+        }
         result
     }
 }
