@@ -32,5 +32,9 @@ impl RegexLexer {
         }
     }
 
-    fn skip_whitespace(&mut self) {}
+    fn skip_whitespace(&mut self) {
+        while self.pos < self.chars.len() && self.chars[self.pos].is_whitespace() {
+            self.pos += 1;
+        }
+    }
 }
