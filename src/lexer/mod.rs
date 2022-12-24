@@ -2,7 +2,6 @@ use self::lib::Token;
 
 mod lib;
 pub struct RegexLexer {
-    regex: String,
     pos: usize,
     chars: Vec<char>,
 }
@@ -10,11 +9,7 @@ pub struct RegexLexer {
 impl RegexLexer {
     pub fn new(regex: &str) -> Self {
         let chars: Vec<char> = regex.chars().collect();
-        Self {
-            regex: regex.to_string(),
-            pos: 0,
-            chars,
-        }
+        Self { pos: 0, chars }
     }
 
     fn next_token(&mut self) -> Option<Token> {
@@ -62,7 +57,6 @@ impl RegexLexer {
                 Token::Alternation => result.push_str(
                     "Matches the expression before of after the | (Acts like a boolean OR). ",
                 ),
-                _ => continue,
             }
         }
         result.trim().to_owned()
